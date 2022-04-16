@@ -1,6 +1,6 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import React from "react";
-// import { useLocalStorage } from 'usehooks-ts'
+import { useLocalStorage } from 'usehooks-ts'
 
 type TodosContextObj = {
   items: Todo[];
@@ -26,12 +26,14 @@ export const TodosContext = createContext<TodosContextObj>({
 });
 
 const TodosContextProvider: React.FC<Props> = (props) => {
-  const [toDos, setToDos] = useState<Todo[]>([]);
-  // const [storageToDos, setStorageToDos] = useLocalStorage('todos', '')
+  const [toDos, setToDos] = useLocalStorage<Todo[]>('todos', []);
+//   const toDosStorage = useReadLocalStorage<Todo[]>('todos');
+  
+//   const [storageToDos, setStorageToDos] = useLocalStorage('todos', '')
 
-  // useEffect(() => {
-  //     if (storageToDos)
-  // }, [])
+//   useEffect(() => {
+//     if(toDosStorage) setToDos(toDosStorage)
+//   }, [toDosStorage])
 
   const addTodoHandler = (description: string) => {
     const newToDo: Todo = {

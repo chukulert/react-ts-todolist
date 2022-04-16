@@ -2,7 +2,6 @@ import ToDoItem from "./ToDoItem";
 import { useContext } from "react";
 import { TodosContext } from "../store/todo-context";
 
-
 const ToDoList: React.FC = () => {
   const todosCtx = useContext(TodosContext);
 
@@ -15,7 +14,14 @@ const ToDoList: React.FC = () => {
     />
   ));
 
-  return <ul>{toDoItems}</ul>;
+  return (
+    <ul className="p-2 border-2 border-solid border-grey mt-2 rounded-lg">
+      {toDoItems.length !== 0 && toDoItems}
+      {!toDoItems.length && (
+        <div className="text-center">No items in the list.</div>
+      )}
+    </ul>
+  );
 };
 
 export default ToDoList;

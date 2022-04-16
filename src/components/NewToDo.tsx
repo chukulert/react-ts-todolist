@@ -16,10 +16,20 @@ const NewToDo: React.FC = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <label htmlFor="text">Todo text</label>
-      <input type="text" id="text" ref={todoTextInputRef} />
-      <button>Add Todo</button>
+    <form
+      onSubmit={submitHandler}
+      className="flex justify-between border-solid border-2 border-grey rounded-lg p-5"
+    >
+      <input
+        type="text"
+        id="text"
+        ref={todoTextInputRef}
+        placeholder="Add a new Todo!"
+        className="p-2 underline-solid border-b-2 grow rounded-lg"
+      />
+      <button className="border-solid border border-sky-500 rounded-lg p-2 ml-2 hover:bg-sky-500 hover:text-white flex-none">
+        Add Todo
+      </button>
     </form>
   );
 };
